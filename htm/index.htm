@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*
+			{
+				font-family: Arial;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				font-size: 12px;
+			}
+
+			body { padding: 200px 0 0 0; }
+
+			form, ul
+			{
+				width: 400px;
+				margin: 0 auto;
+				border: 1px solid #AAA;
+				border-radius: 5px;
+				padding: 10px;
+				line-height: 18px;
+				box-shadow: 3px 3px 3px rgba(123, 123, 123, 0.5);
+			}
+
+			ul
+			{
+				border: 1px solid #F00;
+				color: #A00;
+			}
+			ul li { list-style: none; }
+
+			input[type="text"]
+			{
+				border: 1px solid #AAA;
+				width: 396px;
+				height: 14px;
+				padding: 1px;
+			}
+			
+			hr { height: 5px; }
+
+			a { text-decoration: none; }
+			a:hover { text-decoration: underline; }
+
+			div { text-align: center; }
+
+			div input + input { margin-left: 10px; }
+
+			input[type="submit"]
+			{
+				border: 1px solid #AAA;
+				padding: 1px 3px;
+			}
+
+			.readme
+			{
+				text-align: center;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+<?php
+	if(isset($errors))
+	{
+?>
+		<ul>
+<?php
+		foreach($errors as $error)
+		{
+?>
+			<li><?php echo $error; ?></li>
+<?php
+		}
+?>
+		</ul>
+		<br>
+<?php
+	}
+?>
+		<form action="" method="post">
+			<p>Вставьте ссылку на существующий файл с курсами валют в поле ниже</p>
+			<input type="text" name="file" placeholder="http://" value="<?php echo isset($post['file']) ? $post['file'] : ''; ?>">
+			<hr>
+			<p><em>Если Вам необходимо сформировать кроме <a href="http://kurses.com.ua/for-exchangers/formats#json" target="_blank">JSON</a> формата файлов еще и <a href="http://kurses.com.ua/for-exchangers/formats#xml" target="_blank">XML</a> то, нажимайте на кнопку "JSON & XML" иначе на "JSON".</em></p>
+			<hr>
+			<div>
+				<input type="submit" name="xml" value="JSON & XML">
+				<input type="submit" name="json" value="JSON">
+			</div>
+		</form>
+		<p class="readme">
+			<a href="<?php echo $readmeUrl; ?>" target="_blank">Инструкция</a>
+		</p>
+	</body>
+</html>

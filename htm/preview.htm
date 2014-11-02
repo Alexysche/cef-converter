@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Просмотр настроек для новых файлов экспорта</title>
+		<style type="text/css">
+			*
+			{
+				font-family: Arial;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				font-size: 12px;
+			}
+
+			form
+			{
+				width: 500px;
+				margin: 200px auto 0 auto;
+				border: 1px solid #AAA;
+				border-radius: 5px;
+				padding: 10px;
+				line-height: 18px;
+				box-shadow: 3px 3px 3px rgba(123, 123, 123, 0.5)
+			}
+
+			p
+			{
+				text-align: justify;
+				text-indent: 13px;
+			}
+
+			table
+			{
+				border-collapse: collapse;
+				border: 1px solid #AAA;
+				background-color: #AAA;
+				margin: 7px 0;
+			}
+
+			th, td
+			{
+				background-color: #FFF;
+				line-height: 18px;
+				text-align: center;
+			}
+
+			input[type="text"]
+			{
+				width: 298px;
+				height: 16px;
+				padding: 1px 0;
+			}
+			
+			a { text-decoration: none; }
+			a:hover { text-decoration: underline; }
+
+			div
+			{
+				text-align: center;
+				margin-top: 7px;
+			}
+
+			div input + input { margin-left: 10px; }
+
+			input[type="submit"]
+			{
+				border: 1px solid #AAA;
+				padding: 1px 3px;
+			}
+
+			.readme
+			{
+				text-align: center;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="" method="get">
+			<p>Вами было выбрано формирование следующих форматов файлов:</p>
+			<table>
+				<thead>
+					<tr>
+						<th style="width: 100px;">Формат</th>
+						<th style="width: 298px;">Ссылка</th>
+						<th style="width: 100px;"></th>
+					<tr>
+				</thead>
+				<tbody>
+<?php
+	foreach($info['output'] as $format)
+	{
+?>
+					<tr>
+						<td><?php echo strtoupper($format); ?></td>
+						<td><input type="text" value="<?php echo $baseFullUrl . $format; ?>"></td>
+						<td><a href="<?php echo $baseFullUrl . '?test=' . $format; ?>" target="_blank">просмотреть</a></td>
+					<tr>
+<?php
+	}
+?>
+				</tbody>
+			</table>
+			<p>
+				<strong>Скопируйте все ссылки, что указаны в столбце "Ссылка"</strong>, по этим ссылкам будут доступны файлы после сохранения (нажатия кнопки "Сохранить").
+				Что бы увидеть, как будут выглядеть файлы после сохранения, щелкните на "просмотреть".
+			</p>
+			<p>Что бы начать все сначала, нажмите кнопку "Отменить".</p>
+			<div>
+				<input type="submit" name="cancel" value="Отменить">
+				<input type="submit" name="save" value="Сохранить">
+			</div>
+		</form>
+		<p class="readme">
+			<a href="<?php echo $readmeUrl; ?>" target="_blank">Инструкция</a>
+		</p>
+	</body>
+</html>

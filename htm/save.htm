@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Сохранение настроек для генерации новых файлов экспорта</title>
+		<style type="text/css">
+			*
+			{
+				font-family: Arial;
+				padding: 0;
+				margin: 0;
+				border: 0;
+				font-size: 12px;
+			}
+
+			div
+			{
+				width: 400px;
+				margin: 200px auto 0 auto;
+				border-radius: 5px;
+				padding: 10px;
+				box-shadow: 3px 3px 3px rgba(123, 123, 123, 0.5)
+			}
+
+			.error
+			{
+				border: 1px solid #F00;
+				color: #A00;
+			}
+
+			.success
+			{
+				border: 1px solid #0C0;
+				color: #0A0;
+			}
+
+			input[type="submit"]
+			{
+				border: 1px solid #AAA;
+				padding: 1px 3px;
+			}
+
+			.readme
+			{
+				text-align: center;
+				margin-top: 20px;
+			}
+
+			a { text-decoration: none; }
+			a:hover { text-decoration: underline; }
+		</style>
+	</head>
+	<body>
+<?php
+	if($result)
+	{
+?>
+		<div class="success">Настройки успешно сохранены, страницу можно закрыть.</div>
+<?php
+	}
+	else
+	{
+?>
+		<div class="error">Не удалось сохранить настройки в файл, установите правильные права доступа для каталога и обновите страницу.</div>
+		<form action="" method="get">
+			<input type="submit" name="cancel" value="Отменить">
+		</form>
+<?php
+	}
+?>
+		<p class="readme">
+			<a href="<?php echo $readmeUrl; ?>" target="_blank">Инструкция</a>
+		</p>
+	</body>
+</html>
